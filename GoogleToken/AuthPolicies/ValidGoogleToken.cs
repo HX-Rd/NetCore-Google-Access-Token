@@ -41,9 +41,8 @@ namespace GoogleToken.AuthPolicies
                 return;
             }
 
-            var client = new HttpClient();
             var url = $"https://www.googleapis.com/oauth2/v1/userinfo?access_token={token}";
-            var result = await client.GetAsync(url);
+            var result = await _client.GetAsync(url);
             if (!result.IsSuccessStatusCode)
             {
                 context.Fail();
